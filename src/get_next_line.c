@@ -52,7 +52,7 @@ static int	read_buffers(const int fd, char **leftover, char **line)
 	if (status <= 0)
 	{
 		if (status == -1 || !*leftover || !ft_strlen(*leftover))
-			return (free(buffer), 0);
+			return (free(buffer), free(*leftover), *leftover = NULL, 0);
 		*line = ft_strdup(*leftover);
 		return (free(*leftover), *leftover = NULL, free(buffer), 1);
 	}
